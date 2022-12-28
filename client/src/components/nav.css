@@ -1,0 +1,14 @@
+.nav-main{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    background-color: #dd12e0;
+    margin: 10px  auto;
+}
+.nav-right{
+    width: 60%;
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    
+}
