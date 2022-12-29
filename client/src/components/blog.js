@@ -18,8 +18,6 @@ function Blog(props) {
              </Stack></div>
             <div>
                 <DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon>
-                
-
             </div>
         </div>
             <div className='blog-content'>
