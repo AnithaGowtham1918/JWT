@@ -1,14 +1,23 @@
 .nav-main{
+    height: 100px;
     display: flex;
     justify-content: space-evenly;
     margin-top: 50px;
-    background-color: #dd12e0;
+    background-color:#1e114a;
     margin: 10px  auto;
+    padding: 30px 10px;
+    color: white;
+}
+.nav-left{
+    display: flex;
 }
 .nav-right{
-    width: 60%;
+    width: 80%;
     display: flex;
     list-style: none;
     justify-content: space-evenly;
     
+};
+.dropdown-basic::after {
+    content: none;
 }

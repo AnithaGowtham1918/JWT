@@ -1,6 +1,9 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import './image.css';import 'bootstrap/dist/css/bootstrap.css';
+import image1 from '../Images/download (1).jpg';
+import image2 from '../Images/download (2).jpg'
+import image3 from '../Images/download.jpg'
 //import { requirePropFactory } from '@mui/material';
 function Image() {
   return (
@@ -8,8 +11,8 @@ function Image() {
      <Carousel>
       <Carousel.Item>
         <img
-          className="d-block w-100"
-          src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F258109%2Fpexels-photo-258109.jpeg%3Fcs%3Dsrgb%26dl%3Dpexels-pixabay-258109.jpg%26fm%3Djpg&imgrefurl=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fscenery%2F&tbnid=ZHqN5-TCMy0_cM&vet=12ahUKEwjBxqf2jZz8AhXaLbcAHfYuBS0QMygBegUIARDrAQ..i&docid=9CUnCQ55dyyreM&w=5105&h=2871&q=scenary%20images&ved=2ahUKEwjBxqf2jZz8AhXaLbcAHfYuBS0QMygBegUIARDrAQ"
+          className="d-block w-100 image-wi"
+          src={image1}
           alt="First slide"
         />
         <Carousel.Caption>
@@ -18,8 +21,9 @@ function Image() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <im
-          className="d-block w-100"
+        <img
+          className="d-block w-100  image-wi"
+          src={image2}
           alt="Second slide"
         />
 
@@ -30,8 +34,8 @@ function Image() {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100"
-          src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F258109%2Fpexels-photo-258109.jpeg%3Fcs%3Dsrgb%26dl%3Dpexels-pixabay-258109.jpg%26fm%3Djpg&imgrefurl=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fscenery%2F&tbnid=ZHqN5-TCMy0_cM&vet=12ahUKEwjBxqf2jZz8AhXaLbcAHfYuBS0QMygBegUIARDrAQ..i&docid=9CUnCQ55dyyreM&w=5105&h=2871&q=scenary%20images&ved=2ahUKEwjBxqf2jZz8AhXaLbcAHfYuBS0QMygBegUIARDrAQ"
+          className="d-block w-100  image-wi"
+          src={image3}
           alt="Third slide"
         />
 
