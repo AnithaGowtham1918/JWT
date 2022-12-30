@@ -1,31 +1,21 @@
 import React from 'react';
 import './nav.css';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import Dropdown from 'react-bootstrap/Dropdown';
+import Drop from './dropdown.js';
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
+
 
 function Navbar(props) {
     return (
         <>
         <div className='nav-main'>
-         <div className='nav-left'><h1 style={{color:'red',marginTop:'-40px'}}>M</h1>emories<h1 style={{color:'red'}}>S</h1>pot</div>
+         <div className='nav-left'><Button style={{color:'white'}}><span style={{color:'red',marginTop:'-40px'}}><h1>M</h1></span>emories<span style={{color:'red'}}><h1>S</h1></span>pot</Button></div>
          <div className='nav-right'>
-            <li>New Blog</li>
-            <li>Notification</li>
-            <li><Stack direction="row" spacing={2}>Anitha   
-             <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" /><Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
-      <MoreVertIcon />
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown> 
-             </Stack> </li>
+            <li><Button href="/addblog" style={{color:'white'}} onClick='/compose'>Compose Blog</Button></li>
+            <li><Button href="#text-buttons" style={{color:'white'}}>Notification</Button></li>
+         </div>
+         <div className='nav-end' style={{width:"30%"}}>
+         <Drop></Drop> 
          </div>
         </div>
         </>
