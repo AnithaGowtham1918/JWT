@@ -6,7 +6,7 @@ function Home(props) {
     return (
         <>
             <Navbar></Navbar>
-<Blog></Blog>
+            <Blog></Blog>
         </>
     );
 }
