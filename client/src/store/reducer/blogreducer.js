@@ -5,4 +5,4 @@ const blogReducer =(state=initialState,action)=>{
 
 
 }
-export de
+export default blogReducer;
