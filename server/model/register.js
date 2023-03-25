@@ -3,10 +3,12 @@ const loginModel = mongoose.Schema({
     userName:{
         type:String,
         required:true,
+        unique:true,
     },
     userEmail:{
         type:String,
         required:true,
+        unique:true,
     },
     userPassword:{
         type:String,
@@ -14,12 +16,14 @@ const loginModel = mongoose.Schema({
     },
     isAdmin:{
         type:Boolean,
+        default:false,
     }
-},{
+   
+}, {timestamps:true},{
     writeConcern:{
         w:'majority',
         j:true,
         wtimeout:1000
     }
 });
-module.exports = mongoose.model()   
+module.exports = mongoose.model("UserData",loginModel);   

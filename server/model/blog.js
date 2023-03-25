@@ -5,7 +5,7 @@ const blogModel =mongoose.Schema({
             required:true
         },
         visitedDate:{
-            type:Number
+            type:Date
         },
         image:{
             type:Buffer,
