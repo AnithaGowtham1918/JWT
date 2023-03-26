@@ -24,7 +24,7 @@ function Login(props) {
     console.log(loginData);
     const handleSubmit=async (e)=>{
         e.preventDefault();
-       await axios.get("http://localhost:5000/api/logindata",loginData).then(response=>{
+       await axios.get("http://localhost:4000/api/logindata",loginData).then(response=>{
         history('/home')
       }).catch(error=>{
         window.alert(error);
