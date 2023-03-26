@@ -25,6 +25,6 @@ app.use((error,req,res,next)=>{
     stack:error.stack,
    });
 })
-app.listen("4000",(req,res)=>{
+app.listen("5000",(req,res)=>{
     console.log("server is up and running");
 });

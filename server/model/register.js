@@ -26,8 +26,4 @@ const loginModel = mongoose.Schema({
         wtimeout:1000
     }
 });
-<<<<<<< HEAD
-module.exports = mongoose.model("UserData",loginModel);
-=======
-module.exports = mongoose.model("UserData",loginModel);   
->>>>>>> 9d09de4735225d7bbfbca5759ce08168ff4215c1
+module.exports = mongoose.model("UserData",loginModel)
