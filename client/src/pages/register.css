@@ -1,0 +1,9 @@
+.form-reg{
+    width: 30%;
+    height:auto;
+
+    margin: 0 auto;
+}
+.form-in{
+    display: flex-column;
+}

@@ -1,27 +1,30 @@
 const express = require("express");
 const app = express();
-const blog = require("./routes/blogs");
 const addBlog = require("./routes/addblog");
 const login = require("./routes/login");
-const register = require("./routes/register");
-const deleteRoute = require("./routes/delete");
-const { default: mongoose } = require("mongoose");
-app.use("/api",blog);
+const cors=require("cors");
+const mongoose = require("mongoose");
+app.use(cors());
+app.use(express.json());
 app.use("/blog",addBlog);
 app.use("/api",login);
-app.use("/api",register);
-app.use("/api",deleteRoute);
-mongoose.connect("mongodb+srv://ani:<password>@cluster0.izsegqa.mongodb.net/?retryWrites=true&w=majority",()=>{
-    try{
-        console.log("Db connected succcessfully");
-    }
-    catch(error){
+mongoose.connect("mongodb+srv://ani:aniTHA@cluster0.izsegqa.mongodb.net/JWT?retryWrites=true&w=majority",()=>{
+    try {
+        console.log("DB connection sucessfull");
+    } catch (error) {
         console.log(error);
+        
     }
 });
-app.use("/",(req,res)=>{
-    res.send("hai its almost working");
-});
-app.listen("3000",(req,res)=>{
-    console.log("server is up and running");
+app.use((error,req,res,next)=>{
+    const errorStatus= error.status || 500;
+    const errorMessage=error.message || "Something went wrong";
+   return  res.status(errorStatus).json({
+    success:false,
+    message:errorMessage,
+    stack:error.stack,
+   });
 })
+app.listen("4000",(req,res)=>{
+    console.log("server is up and running");
+});

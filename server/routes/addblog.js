@@ -1,5 +1,21 @@
 const router = require("express").Router();
-router.get("/addblog",(req,res)=>{
-    res.send("This is a add blog router");
-});
+const {getBlog}= require("../controllers/blog");
+const Blogs =require("../model/blog");
+router.get("/addblog",getBlog);
+router.post("/postblog",async(req,res)=>{
+try{
+    const {place,visitedDate,image}=req.body;
+    const data= await new Blogs({
+        place,
+        visitedDate,
+        image
+    });
+    const saved=await data.save();
+    res.send(saved);
+}
+catch(error){
+    res.send(error);
+}
+    
+})
 module.exports= router;
