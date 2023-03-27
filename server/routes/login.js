@@ -23,7 +23,7 @@ router.get("/logindata",async(req,res,next)=>{
 });
 router.post("/registerdata",async(req,res,next)=>{
     try {
-        const {userName,userEmail,isAdmin,userPassword}=req.body;
+        const {userName,userEmail,isAdmin}=req.body;
    const password= req.body.userPassword;
    const rounds=10;
    const salt= await bcrypt.genSalt(rounds);

@@ -27,7 +27,7 @@ function Login(props) {
        await axios.get("http://localhost:4000/api/logindata",loginData).then(response=>{
         history('/home')
       }).catch(error=>{
-        window.alert(error);
+        window.alert(error.message);
       })
     }
     
