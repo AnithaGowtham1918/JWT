@@ -1,21 +1,30 @@
 const router = require("express").Router();
-const {getBlog}= require("../controllers/blog");
+const {getBlog,postBlog}= require("../controllers/blog");
 const Blogs =require("../model/blog");
+const createError = require("../utils/error");
+//Get Post
 router.get("/addblog",getBlog);
-router.post("/postblog",async(req,res)=>{
-try{
-    const {place,visitedDate,image}=req.body;
-    const data= await new Blogs({
-        place,
-        visitedDate,
-        image
-    });
-    const saved=await data.save();
-    res.send(saved);
-}
-catch(error){
-    res.send(error);
-}
+//Create Post
+router.post("/postblog",postBlog);
+//Update Post
+router.put("/:id",async(req,res)=>{
+    try{
+      const data= await Blogs.findByIdAndUpdate(req.params.id);
+    }catch(error){
+
+    }
+});
+//Delete post
+router.delete("/deleteblog/:id",async(req,res,next)=>{
+  //const id= req.params.id;
+  try {
+    const data = await Blogs.findByIdAndDelete(req.params.id);
+    res.send("deleted")
+    //data.delete();
+  } catch (error) {
+    return next(createError(error.status,error.message));
     
-})
+  }
+
+});
 module.exports= router;

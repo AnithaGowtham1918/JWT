@@ -8,7 +8,7 @@ function Register(props) {
     const [userData,setUserData]=useState({
         userName:"",
         userEmail:"",
-        isAdmin:"",
+        isAdmin:"false",
         userPassword:"",
     });
     const handleChange=(event)=>{
@@ -22,12 +22,18 @@ function Register(props) {
         })
     }
     console.log(userData)
-    const handleSubmit=(e)=>{
+    const handleSubmit=async(e)=>{
         e.preventDefault();
-        axios.post("http://localhost:4000/api/registerdata",userData).then(res=>
-        history('/login')).catch((error)=>{if(error){
-            console.log(error);
-        }});
+        try{
+            const uri="http://localhost:4000/api/registerdata"
+          const response= await axios.post(uri,userData);
+          console.log(response.data);
+          history("/login");
+        }
+        catch(error){
+            console.log(error.response.data)
+
+        }
         setUserData({
             userName:"",
             userEmail:"",
