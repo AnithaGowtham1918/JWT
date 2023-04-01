@@ -13,7 +13,7 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import Button from '@mui/material/Button';
 
-export default function AccountMenu() {
+export default function AccountMenu(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -35,7 +35,7 @@ export default function AccountMenu() {
             aria-expanded={open ? 'true' : undefined}
           >
             <Avatar sx={{ width: 60, height: 60 }}>M</Avatar>
-            <Button style={{color:'white',marginLeft:"20px"}}>UserName</Button>
+            <Button style={{color:'white',marginLeft:"20px"}}>username</Button>
           </IconButton>
         </Tooltip>
       </Box>

@@ -3,8 +3,11 @@ import axios from 'axios';
 //import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch} from "react-redux";
+import { loginUser} from "../store/action/user";
 function Login(props) {
     const history = useNavigate();
+    const dispatch = useDispatch();
     const[loginData,setLoginData]=useState({
         userEmail:"",
         userPassword:"",
@@ -25,9 +28,9 @@ function Login(props) {
     const handleSubmit=async(e)=>{
         e.preventDefault();
         try{
-            //const uri="http://localhost:4000/api/logindata";
             await axios.post("http://localhost:4000/api/logindata",loginData).then((response)=>{
-//console.log(error.data);
+                dispatch(loginUser(response.data));
+                console.log(response.data);
             if(response.data){
                 window.alert("Logged in successfully");
                 history("/home");

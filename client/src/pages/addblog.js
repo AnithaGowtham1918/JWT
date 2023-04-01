@@ -18,32 +18,19 @@ function Addblog(props) {
         })
     }
   function handleSubmit(event){
-       // const name=event.target.name;
-       //// const value=event.target.value;
     event.preventDefault();
-    
         axios.post("http://localhost:4000/blog/postblog",values).then((res,error)=>{
             try {
                 console.log(res.data);
             } catch (error) {
                 console.log(error);
-                
-            }
-
-        });
+            }});
         setValues({
             place:"",
             visitedDate:"",
             images:[]
-        })
-    
+        })};
    
-       // setData(prev=>{
-         //   return{...prev,
-         //   [name]: value}
-      //  })
-   };
-   // console.log(data)
     return (
         <>
 <Navbar></Navbar>

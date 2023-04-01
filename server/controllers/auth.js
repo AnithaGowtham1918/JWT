@@ -13,6 +13,7 @@ module.exports.loginData=async(req,res,next)=>{
             const comparepassword= await bcrypt.compare(password,data.userPassword);
             if(comparepassword){
                 const accessToken = jwt.sign({id:data._id,isAdmin:data.isAdmin},"secretkey");
+                console.log(accessToken);
                const {userPassword, isAdmin,...others}=data._doc;
                 res.json({...others,accessToken});
             }

@@ -2,10 +2,11 @@ const router = require("express").Router();
 const {getBlog,postBlog}= require("../controllers/blog");
 const Blogs =require("../model/blog");
 const createError = require("../utils/error");
+const verify =require("../controllers/authVerify");
 //Get Post
 router.get("/addblog",getBlog);
 //Create Post
-router.post("/postblog",postBlog);
+router.post("/postblog",verify,postBlog);
 //Update Post
 router.put("/:id",async(req,res)=>{
     try{
