@@ -11,6 +11,7 @@ function Register(props) {
         isAdmin:"false",
         userPassword:"",
     });
+    const [err,setError]=useState("")
     const handleChange=(event)=>{
         const name=event.target.name;
         const value=event.target.value;
@@ -31,8 +32,8 @@ function Register(props) {
           history("/login");
         }
         catch(error){
-            console.log(error.response.data)
-
+            console.log(error.response.data.message)
+             setError(error.response.data.message);
         }
         setUserData({
             userName:"",
@@ -54,6 +55,7 @@ function Register(props) {
                 placeholder="Enter your name"
                 value={userData.userName}
                 onChange={handleChange}></input><br />
+                {err}
                  <label for="email">Email:</label><br></br>
                 <input id="email"
                 type="text"

@@ -12,7 +12,10 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import Button from '@mui/material/Button';
-
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 export default function AccountMenu(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -22,6 +25,7 @@ export default function AccountMenu(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  let {id}=useParams();
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center'}}>
@@ -35,7 +39,7 @@ export default function AccountMenu(props) {
             aria-expanded={open ? 'true' : undefined}
           >
             <Avatar sx={{ width: 60, height: 60 }}>M</Avatar>
-            <Button style={{color:'white',marginLeft:"20px"}}>username</Button>
+            <Button style={{color:'white',marginLeft:"20px"}}>UserNames</Button>
           </IconButton>
         </Tooltip>
       </Box>
@@ -75,7 +79,7 @@ export default function AccountMenu(props) {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem>
-          <Avatar /> Profile
+          <Avatar /> <Link to={`/profile/${id}`}>Profile</Link>
         </MenuItem>
         <MenuItem>
           <Avatar /> My account

@@ -7,9 +7,16 @@ const blogModel =mongoose.Schema({
         visitedDate:{
             type:Date
         },
+        des:{
+            type:String,
+        },
         image:{
-            type:Buffer,
+            type:String,
             contentType:String
+        },
+        postUserName:{
+            type:String,
+            required:true,
         }
-});
+},{timestamps:true});
 module.exports =mongoose.model("Blogs",blogModel);

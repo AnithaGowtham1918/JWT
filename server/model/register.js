@@ -17,6 +17,9 @@ const loginModel = mongoose.Schema({
     isAdmin:{
         type:Boolean,
         default:false,
+    },
+    profilePicture:{
+        type:String,
     }
    
 }, {timestamps:true},{

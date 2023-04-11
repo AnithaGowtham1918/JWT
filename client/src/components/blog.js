@@ -20,7 +20,7 @@ function Blog(props) {
     const userData = useSelector((state)=>
         state.loginuser.user,
     );
-    console.log({userData:userData});
+    console.log({userData:userData.userName});
     useEffect(()=>{
       const  fetch=async()=>{
             await axios.get("http://localhost:4000/blog/addBlog").then((res,err)=>{
@@ -51,17 +51,18 @@ function Blog(props) {
                     <div className='btop-left'>
                         
                      <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg"  style={{width:80,height:80,marginRight:20}}/>
-                     <h2>USerN</h2>
+                     <h2>userName</h2>
                      </div>
                     <div style={{display:"flex"}}>
                        <Button style={{color:"#1e114a"}} onClick={()=>handleDelete(data._id)}><DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon></Button>
-                       <Button style={{color:"#1e114a"}}><ModeEditOutlineOutlinedIcon></ModeEditOutlineOutlinedIcon></Button>
+                       <Link to={`/postupdate/${data._id}`}><Button style={{color:"#1e114a"}}><ModeEditOutlineOutlinedIcon></ModeEditOutlineOutlinedIcon></Button></Link>
                     </div>
                 </div>
                 <p>{index+1}</p>
                 <Image></Image>  
               <div className='blog-content'key={index} >
                   {data.place}
+                  <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32</p>
                  <Link to="/single"><Button>click to view in detial</Button></Link> 
               </div>                     
               <div className='blog-comments'>

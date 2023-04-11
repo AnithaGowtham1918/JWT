@@ -33,7 +33,7 @@ function Login(props) {
                 console.log(response.data);
             if(response.data){
                 window.alert("Logged in successfully");
-                history("/home");
+                history(`/home/${response.data._id}`);
                }
            });} 
            catch(error){

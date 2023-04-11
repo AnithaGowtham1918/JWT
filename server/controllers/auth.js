@@ -47,7 +47,7 @@ module.exports.registerData=async(req,res,next)=>{
     const saved = await data.save();
     res.send(saved);
     } catch (error) {
-        return next(createError(error.status,error.message));                                           
+        return next(createError(404,"User already present"));                                           
         
     }
     

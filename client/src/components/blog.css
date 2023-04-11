@@ -24,12 +24,27 @@
     align-items: center;
     justify-items: center;
 }
-.blog-content{
+.blog-content >p{
     width: 90%;
-    height: 200px;
     background-color: aqua;
     margin: 0 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .ImageList{
     width: 100%;
+}
+.up-main{
+    display: flex;
+    flex-direction: column;
+}
+.up-main>div{
+    padding: 20px 10px;
+    align-items: center;
+}
+.up-main>button{
+    width: 30%;
 }

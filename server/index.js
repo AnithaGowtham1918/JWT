@@ -4,18 +4,22 @@ const addBlog = require("./routes/addblog");
 const login = require("./routes/login.js")
 const cors=require("cors");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const userRouter = require("./routes/user");
+dotenv.config();
 app.use(cors());
 app.use(express.json());
 app.use("/blog",addBlog);
 app.use("/api",login);
-mongoose.connect("mongodb+srv://ani:aniTHA@cluster0.izsegqa.mongodb.net/JWT?retryWrites=true&w=majority",()=>{
-    try {
-        console.log("DB connection sucessfull");
-    } catch (error) {
+app.use("/user",userRouter);
+mongoose.connect(process.env.MONGO_URL,{
+    useNewUrlParser : true,
+   // useUnifiedToplogy: true,
+    //useCreateIndex:true,
+}).then( console.log("DB connection sucessfull")).catch((error)=> {
         console.log(error);
         
-    }
-});
+ })
 app.use((error,req,res,next)=>{
     const errorStatus= error.status || 500;
     const errorMessage=error.message || "Something went wrong";
