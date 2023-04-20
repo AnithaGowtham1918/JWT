@@ -8,6 +8,7 @@ import Register from './pages/register';
 import SingleBlog from './components/singleBlog';
 import Profile from './pages/profile';
 import Postupdate from './pages/postupdate';
+import ResExample from './components/resNav';
 function App(props) {
   return (
     <>
@@ -16,11 +17,12 @@ function App(props) {
         <Routes>
           <Route path='/' element={<Register></Register>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
-          <Route path="/home/:id" element={<Home></Home>}></Route>
+          <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/addblog" element={<Addblog></Addblog>}></Route>
-          <Route path='/single' element={<SingleBlog></SingleBlog>}></Route>
-          <Route path='/profile/:id' element={<Profile></Profile>}></Route>
+          <Route path='/single/:id' element={<SingleBlog></SingleBlog>}></Route>
+          <Route path='/profile' element={<Profile></Profile>}></Route>
           <Route path="/postupdate/:id" element={<Postupdate></Postupdate>}></Route>
+          <Route path="/res" element={<ResExample></ResExample>}></Route>
         </Routes>
       </Router>
       

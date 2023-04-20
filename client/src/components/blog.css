@@ -1,6 +1,6 @@
 .blog-main{
     width: 80%;
-    background-color: beige;
+    background-color: rgb(250, 250, 244);
     height: auto;
     margin: 0 auto;
     list-style: none;
@@ -38,6 +38,7 @@
     width: 100%;
 }
 .up-main{
+    margin-left: 30%;
     display: flex;
     flex-direction: column;
 }
@@ -47,4 +48,12 @@
 }
 .up-main>button{
     width: 30%;
+}
+.up-main>.up-img{
+    width: 70%;
+    height: 300px;
+    margin: 0 auto;
+    object-fit: fit;
+    border-radius: 10px;
+    margin-left: -10%;
 }

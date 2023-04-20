@@ -1,0 +1,15 @@
+.button-update{
+    position: relative;
+    left: 45%;
+}
+.profile-top{
+    margin-left: 20px;
+    padding-left:20px;
+}
+.profile-top>div{
+    padding-left: 30px;
+}
+.profile-val{
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,17 @@
+.up-button{
+    position: relative;
+    left:20%;
+    top:65%;
+    background-color:#1e114a;
+    color:white;
+}
+.up-addIcon{
+    color: #1e114a;
+    position: relative;
+}
+@media(max-width:400px){
+    .up-button{
+        font-size: 12px;
+
+    }
+}

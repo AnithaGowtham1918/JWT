@@ -9,4 +9,10 @@ export const deleteBlog=(id)=>{
         type:"DELETE_BLOG",
         
     }
+};
+export const personalBlog=(blog)=>{
+    return{
+        type:"PERSONAL_BLOG",
+        payload:blog,
+    }
 }

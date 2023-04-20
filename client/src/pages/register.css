@@ -1,9 +1,42 @@
-.form-reg{
-    width: 30%;
-    height:auto;
 
+.form-reg{
+    width: 35%;
+    height:auto;
+    
     margin: 0 auto;
+   color: aliceblue;
 }
 .form-in{
     display: flex-column;
+}
+.form-main{
+    background-image: linear-gradient( #2b2240,#d1c7eb, #1e114a);
+    height: 800px;
+    font-size: 35px;
+    
+}
+@media(max-width:800px){
+    .form-reg{
+        font-size: 25px;
+        width: 100%;
+        margin-left: 20%;
+    }
+    .form-in{
+        margin: 0;
+    }
+    .form-main{
+        height: 600px;
+    }
+}
+@media(max-width:400px){
+    .form-main{
+        height: 400px;
+       
+    }
+    .form-reg{
+        font-size: 25px;
+        width: 100%;
+        font-size: 10px;
+        
+    }
 }

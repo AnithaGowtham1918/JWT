@@ -1,4 +1,5 @@
 .nav-main{
+    width: 100%;
     height: 100px;
     position: sticky;
     top: 0;
@@ -26,4 +27,16 @@
 };
 .dropdown-basic::after {
     content: none;
+}
+@media(max-width:600px){
+    .nav-main{
+        flex-direction: column;
+        height: auto;
+    }
+    .nav-left{
+    }
+    .nav-right{
+        display: flex;
+        flex-direction: column;
+    }
 }

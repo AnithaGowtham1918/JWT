@@ -1,0 +1,10 @@
+.login-main{
+    background-image: linear-gradient( #2b2240,#d1c7eb, #1e114a);
+    height: 800px;
+}
+.login-form{
+    width: 30%;
+    height:auto;
+    font-size: 35px;
+    margin: 0 auto;
+}

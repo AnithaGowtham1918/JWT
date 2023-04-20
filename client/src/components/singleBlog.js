@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from './image';
 import Navbar from './navbar';
+import axios from 'axios';
+import { useParams } from 'react-router';
 function SingleBlog(props) {
+    let {id}=useParams();
+    const [value,setValue]=useState([]);
+    console.log(value);
+    useEffect(()=>{
+        const data =async()=>{
+            const response = await axios.get(`http://localhost:4000/blog/${id}`);
+            setValue(response.data);
+        }
+        data();
+    },[id]);
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
     return (
         <>
     <Navbar></Navbar>
         <div className='single-top'>
-            <div>Posted By:</div>
-            <div>Posted At:</div>
-            <div>Loction:</div>
-            <div>Visted during:</div>
+            <div>Posted By:{value.userName}</div>
+            <div>Posted At:{new Date(value.createdAt).toDateString}</div>
+            <div>Loction:{value.place}</div>
+            <div>Visted during:{monthNames[new Date(value.visitedDate).getMonth()]}</div>
         </div>
         <div className='single-Middle'>
             <Image></Image>

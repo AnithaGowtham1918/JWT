@@ -3,10 +3,11 @@ const {getBlog,postBlog}= require("../controllers/blog");
 const Blogs =require("../model/blog");
 const createError = require("../utils/error");
 const verify =require("../controllers/authVerify");
+const User = require("../model/register");
 //Get All Post
 router.get("/addblog",getBlog);
 //Create Post
-router.post("/postblog",verify,postBlog);
+router.post("/postblog",postBlog);
 //Update Post
 router.put("/:id",async(req,res,next)=>{
 
@@ -49,6 +50,6 @@ router.get("/:id",async(req,res,next)=>{
     next(createError(404,error.message));
   }
 });
-//Get particular user post
+//add like d username
 
 module.exports= router;

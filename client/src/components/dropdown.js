@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 export default function AccountMenu(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -25,7 +26,10 @@ export default function AccountMenu(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  let {id}=useParams();
+const userData= useSelector((data)=>
+data.loginuser.user,
+)
+console.log(userData._id);
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center'}}>
@@ -39,7 +43,7 @@ export default function AccountMenu(props) {
             aria-expanded={open ? 'true' : undefined}
           >
             <Avatar sx={{ width: 60, height: 60 }}>M</Avatar>
-            <Button style={{color:'white',marginLeft:"20px"}}>UserNames</Button>
+            <Button style={{color:'white',marginLeft:"20px"}}>{userData.userName}</Button>
           </IconButton>
         </Tooltip>
       </Box>
@@ -79,7 +83,7 @@ export default function AccountMenu(props) {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem>
-          <Avatar /> <Link to={`/profile/${id}`}>Profile</Link>
+          <Avatar /> <Link to={`/profile`}>Profile</Link>
         </MenuItem>
         <MenuItem>
           <Avatar /> My account
@@ -95,7 +99,7 @@ export default function AccountMenu(props) {
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
-          Settings
+          <Link to={"/res"}>Settings</Link>
         </MenuItem>
         <MenuItem>
           <ListItemIcon>

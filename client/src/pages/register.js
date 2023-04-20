@@ -3,6 +3,7 @@ import './register.css';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Image from '../Images/memory.jpg';
 function Register(props) {
     const history = useNavigate();
     const [userData,setUserData]=useState({
@@ -45,9 +46,10 @@ function Register(props) {
         }
     
     return (
-        <>
+        <div className='form-main'>
             <form className='form-reg'>
-                <div className='form-in'>
+                <div className="form-in">
+                    <div>
                 <label for="name">Name:</label><br></br>
                 <input id="name"
                 type="text"
@@ -56,6 +58,8 @@ function Register(props) {
                 value={userData.userName}
                 onChange={handleChange}></input><br />
                 {err}
+                </div>
+                <div>
                  <label for="email">Email:</label><br></br>
                 <input id="email"
                 type="text"
@@ -63,13 +67,16 @@ function Register(props) {
                 placeholder="Enter your email"
                 value={userData.userEmail}
                 onChange={handleChange}></input><br />
-                 <label for="password">Password:</label><br></br>
+                </div>
+                <div>                 <label for="password">Password:</label><br></br>
                 <input id="password"
                 type="text"
                 name="userPassword"
                 placeholder="Enter your password"
                 value={userData.userPassword}
                 onChange={handleChange}></input><br />
+                </div>
+
                  <label for="name">isAdmin</label><br></br>
                 <input id="name"
                 type="checkbox"
@@ -77,11 +84,11 @@ function Register(props) {
                 value={userData.isAdmin}
                 onChange={handleChange}></input><br />
                 <Button variant="contained" style={{backgroundColor:'#3ff260'}} onClick={handleSubmit}>Register</Button>
-                <div><h4>Already have an account?</h4>
+                <div><p>Already have an account?</p>
                 <Button variant='contained' style={{backgroundColor:'#3ff260'}}><a href='/login'>Login</a></Button></div>
                 </div>
             </form>
-        </>
+        </div>
     );
 }
 
