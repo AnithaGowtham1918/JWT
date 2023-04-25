@@ -6,12 +6,16 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import Image from './image';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
-import {addBlog} from '../store/action/newblog.js';
+import {addBlog, deleteBlog} from '../store/action/newblog.js';
 import {useDispatch,useSelector} from 'react-redux';
 import axios from 'axios';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+import FmdGoodRoundedIcon from '@mui/icons-material/FmdGoodRounded';
 function Blog(props) {
+     var monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
     const [key,setKey]=useState(0);
     const dispatch=useDispatch();
     const blog=useSelector((data)=>
@@ -20,18 +24,28 @@ function Blog(props) {
     console.log(blog);
     const userData= useSelector((data)=>
 data.loginuser.user,
-)
-    const [colors,setColorValue]=useState("white")
+);
+const id=userData._id;
     const [ke,setKe]=useState(false);
-    const handleLike=async()=>{
+    const handleLike=async(postId)=>{
      setKe(!ke);
-     if(ke){
-        setColorValue("red");
-         }
-         else{
-            setColorValue("white");
-         }
-        await axios.post("http://localhost/blog/addlike",userData._id);
+        try{
+            await axios.put(`http://localhost:4000/blog/addlike/${postId}`,{id});
+            setKey(key=>key+1);
+        }catch(error){
+
+        }
+       
+    }
+      const handleUnLike=async(postId)=>{
+     setKe(!ke);
+        try{
+            await axios.put(`http://localhost:4000/blog/unlike/${postId}`,{id});
+            setKey(key=>key+1);
+        }catch(error){
+
+        }
+       
     }
     useEffect(()=>{
       const  fetch=async()=>{
@@ -47,16 +61,17 @@ data.loginuser.user,
      
     },
     [key,dispatch]);
-   const handleDelete =async(id)=>
+   const handleDelete =async(id,index)=>
     {
         window.alert("do you really want to delete");
       await axios.delete(`http://localhost:4000/blog/deleteblog/${id}`);
-       setKey(key=>key+1);
+      //dispatch(deleteBlog(id,index));
+      setKey(key=>key+1);
+      
+       
 
     }
-    var monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
+   
     return (
         <>
       
@@ -65,14 +80,14 @@ data.loginuser.user,
                 <div className='blog-top'>
                     <div className='btop-left'>
                         
-                     <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg"  style={{width:80,height:80,marginRight:20}}/>
+                     <Avatar className="blog-avatar" alt="Cindy Baker" src="/static/images/avatar/3.jpg"  style={{width:80,height:80,marginRight:20}}/>
                      <div className='btop-name'>
                      <div><h2>{data.postUserName}</h2></div>
                      <div>{new Date(data.createdAt).toDateString()}</div>
                      </div>
                      </div>
-                    <div style={{display:"flex"}}>
-                      {data.postUserName===userData.userName && <Button style={{color:"#1e114a"}} onClick={()=>handleDelete(data._id)}><DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon></Button>}
+                    <div style={{display:"flex"}} className='blog-button'>
+                      {data.postUserName===userData.userName && <Button style={{color:"#1e114a"}} onClick={()=>handleDelete(data._id,index)}><DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon></Button>}
                       
                     {data.postUserName===userData.userName && <Link to={`/postupdate/${data._id}`}><Button style={{color:"#1e114a"}}><ModeEditOutlineOutlinedIcon></ModeEditOutlineOutlinedIcon></Button></Link>}
     
@@ -80,20 +95,17 @@ data.loginuser.user,
                 </div>
                 <Image image={data.image}></Image>  
               <div className='blog-content'key={index} >
-              <Link to={`/single/${data._id}`}><h3>Place:{data.place}</h3></Link>
+              <Link style={{textDecoration:"none",color:"#1e114a",display:"flex"}} to={`/single/${data._id}`}><FmdGoodRoundedIcon style={{width:"50",height:"50"}}></FmdGoodRoundedIcon><h2>{data.place}</h2></Link>
               </div>                     
-              <div>Visited During:{monthNames[new Date(data.visitedDate).getMonth()]}</div>
               <div className='blog-comments'>
-                  {!ke &&<Button onClick={handleLike}><FavoriteBorderOutlinedIcon style={{color:"black"}}></FavoriteBorderOutlinedIcon></Button>}
-                  {ke &&<Button onClick={handleLike}><FavoriteRoundedIcon style={{fill:"red"}}></FavoriteRoundedIcon></Button>}
+                  {data.likes.includes(userData._id)  ? <Button onClick={()=>handleUnLike(data._id)}><FavoriteRoundedIcon style={{fill:"red"}}></FavoriteRoundedIcon></Button> :<Button onClick={()=>handleLike(data._id)}><FavoriteBorderOutlinedIcon style={{color:"black"}}></FavoriteBorderOutlinedIcon></Button>}
+                  {data.likes.length>0 && <div>{data.likes.length}likes</div>}
               </div>
               </div> 
               
            })
             
            }
-        
-       
         </>
     );
 }

@@ -50,6 +50,45 @@ router.get("/:id",async(req,res,next)=>{
     next(createError(404,error.message));
   }
 });
+// get specific user post
+router.get("/specific/:id",async(req,res,next)=>{
+    const user = await User.findById(req.params.id);
+    console.log(user);
+  try {
+    const data = await Blogs.find({postUserName:user.userName});
+    console.log(data);
+    res.send(data);
+  } catch (error) {
+    next(createError(404,error.message));
+    
+  }
+})
 //add like d username
-
+router.put("/addLike/:id",async(req,res,next)=>{
+  const id=req.body.id;
+  console.log(id);
+  try{
+   const saved = await Blogs.findByIdAndUpdate(req.params.id,{
+    $push:{likes:id}
+   },{new:true});
+  res.send(saved);
+  }
+  catch(error){
+ next(createError(422,error.message));
+  }
+});
+//add unlike
+router.put("/unLike/:id",async(req,res,next)=>{
+  const id=req.body.id;
+  console.log(id);
+  try{
+   const saved = await Blogs.findByIdAndUpdate(req.params.id,{
+    $pull:{likes:id}
+   },{new:true});
+  res.send(saved);
+  }
+  catch(error){
+ next(createError(422,error.message));
+  }
+});
 module.exports= router;

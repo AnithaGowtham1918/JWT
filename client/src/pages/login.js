@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector} from "react-redux";
@@ -60,21 +60,31 @@ function Login(props) {
     
             <div className='login-main'>
         <form className='login-form' onSubmit={handleSubmit}>
+            <div className='login-in'>
+            <div>
             <label htmlFor="email">Email:</label>
             <input type="email"
             name='userEmail'
             placeholder='Enter the email'
             onChange={handleChange}
             value={loginData.userEmail}></input>
-            <label for="password">Password:</label>
+            </div>
+           <div>
+           <label for="password">Password:</label>
             <input type="password"
             name="userPassword"
             placeholder="Enter the password"
             onChange={handleChange}
             value={loginData.userPassword}></input><br></br>
-             <Button variant="contained" style={{backgroundColor:'#3ff260'}} type="submit">
+           </div>
+             <Button className='login-button' variant="contained" style={{backgroundColor:'#2b2240',color:"wheat"}} type="submit">
            Login
              </Button>
+             </div>
+             <div className='lo-reg'>
+                <div>Not an user?</div>
+                <div><Link to="/"><button style={{backgroundColor:"#2b2240",color:"wheat"}}>Register</button></Link></div>
+             </div>
         </form>
         </div>
     );

@@ -1,0 +1,42 @@
+.form-updatemain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: space-around;
+    font-size: 30px;
+}
+.form-updatemain>div{
+    padding-top: 35px;
+    flex: 100%;
+}
+.update-avatar{
+    position: relative;
+    left:50% !important;
+    width: 100px !important;
+    height:100px !important
+}
+.update-textfield{
+    width: 155% !important;
+    font-size: 100px !important;
+}
+.button-up{
+    position: relative;
+    top:30%;
+    left:3%;
+
+}
+.form-updateuser{
+    position: relative;
+    top: 30%;
+    left: -10%;
+}
+.button-default{
+    background-color: #2b2240;
+    color: wheat;
+    font-size: 18px;
+}
+.update-pic>.after-file{
+    position: relative;
+    left: 60% !important;
+}

@@ -4,8 +4,8 @@ const bcrypt = require("bcrypt");
 const createError = require("../utils/error");
 //Update user
 router.put("/:id",async(req,res,next)=>{
-    if(req.body.userId== req.params.id){
-      if(req.body.userPassword){
+  const data = await user.findById(req.params.id);
+      if(req.body.userPassword!=data.userPassword){
         const salt = await bcrypt.genSalt(10);
         req.body.password = await bcrypt.hash(req.body.password,salt);
       }
@@ -18,11 +18,8 @@ router.put("/:id",async(req,res,next)=>{
          return next(createError(error.status,error.message));
       }
     }
-    else{
-        return next(createError(405,"You can only update your details"));
-    }
 
-});
+);
 //delete user
 router.delete("/:id",async(req,res,next)=>{
   if(req.body.userId===req.params.id){

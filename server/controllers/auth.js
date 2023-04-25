@@ -32,7 +32,7 @@ module.exports.loginData=async(req,res,next)=>{
 //RegisterRouter
 module.exports.registerData=async(req,res,next)=>{
     try {
-        const {userName,userEmail,isAdmin}=req.body;
+        const {userName,userEmail,isAdmin,profilePicture}=req.body;
    const password= req.body.userPassword;
    const rounds=10;
    const salt= await bcrypt.genSalt(rounds);
@@ -41,7 +41,8 @@ module.exports.registerData=async(req,res,next)=>{
         userName,
         userEmail,
        userPassword:hashedPassword,
-        isAdmin
+       profilePicture,
+   
         
     });
     const saved = await data.save();

@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from '../components/image';
 import Navbar from '../components/navbar';
 import axios from 'axios';
 import { useParams } from 'react-router';
 function Postupdate(props) {
     const {id}= useParams();
-    //console.log(id);
+    const [values,setValue] =useState({});
+
      const Fetch=async()=>{
        
         const res= await axios.get(`http://localhost:4000/blog/${id}`);
         console.log(res);
+        setValue(res.data);
      }
     useEffect(()=>{
         Fetch();

@@ -8,7 +8,7 @@ import Register from './pages/register';
 import SingleBlog from './components/singleBlog';
 import Profile from './pages/profile';
 import Postupdate from './pages/postupdate';
-import ResExample from './components/resNav';
+import Update from './pages/updateuser';
 function App(props) {
   return (
     <>
@@ -22,7 +22,7 @@ function App(props) {
           <Route path='/single/:id' element={<SingleBlog></SingleBlog>}></Route>
           <Route path='/profile' element={<Profile></Profile>}></Route>
           <Route path="/postupdate/:id" element={<Postupdate></Postupdate>}></Route>
-          <Route path="/res" element={<ResExample></ResExample>}></Route>
+          <Route path="/updateuser/:id" element={<Update></Update>}></Route>
         </Routes>
       </Router>
       

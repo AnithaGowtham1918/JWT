@@ -21,14 +21,15 @@ module.exports.postBlog=async(req,res,next)=>{
     const Name= user.userName;
      if(user){
         try{
-            const {place,visitedDate,image,desc}=req.body;
+            const {place,visitedDate,image,desc,userId}=req.body;
            // const image= req.file;
            const postUserName=Name;
             const data= await new Blogs({
                 place,
                 visitedDate,
                 image,
-               postUserName,desc
+               postUserName,desc,
+               userId,
             });
             const saved=await data.save();
             res.send(saved);

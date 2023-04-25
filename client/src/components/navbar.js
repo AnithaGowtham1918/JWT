@@ -1,11 +1,22 @@
 import React from 'react';
 import './nav.css';
-import Drop from './dropdown.js';
+import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import { Link, useParams } from 'react-router-dom';
-import SearchIcon from '@mui/icons-material/Search';
-
+import { Link, useNavigate} from 'react-router-dom';
+import { useSelector,useDispatch } from 'react-redux';
+import { LogOut } from '../store/action/user';
 function Navbar(props) {
+    const  PF = "http://localhost:4000/images/";
+    const history = useNavigate();
+    const dispatch =useDispatch();
+    const handleLogOut=()=>{
+        dispatch(LogOut());
+        history("/login");
+    }
+    const userData= useSelector((data)=>
+data.loginuser.user,
+)
+
     return (
         <>
         
@@ -14,10 +25,11 @@ function Navbar(props) {
          <div className='nav-right'>
             <li><Button href={`/addblog`} style={{color:'white'}} onClick=''>Compose Blog</Button></li>
             <li><Button href="#text-buttons" style={{color:'white'}}>Notification</Button></li>
-            <li><Button href="" style={{color:'white'}}>LogOUT</Button></li>
+            <li><Button href="" style={{color:'white'}} onClick={handleLogOut}>LogOUT</Button></li>
          </div>
-         <div className='nav-end' style={{width:"30%"}}>
-        <Link  to="/profile" style={{textDecoration:"none"}}> <Drop></Drop></Link>
+         <div className='nav-end' style={{width:"20%"}}>
+            <div className='avatar'><Link to="/profile"><Avatar sx={{ width: 60, height: 60 }} src={PF+userData.profilePicture}></Avatar></Link></div>
+            <div className='user'> <Link to ="/profile"><Button style={{color:'white',marginLeft:"20px"}}>{userData.userName}</Button></Link></div>
          </div>
         </div>
         </>

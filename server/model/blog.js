@@ -17,7 +17,10 @@ const blogModel =mongoose.Schema({
             type:String,
         },
         likes:{
-            type:Number,
+            type:Array,
+        },
+        userId:{
+            type:String,
         }
 },{timestamps:true});
 module.exports =mongoose.model("Blogs",blogModel);

@@ -23,3 +23,9 @@ export const loginUser=(value)=>{
         payload:value,
     };
 };
+export const LogOut=()=>{
+    return{
+        type:"LOG_OUT",
+    }
+    
+};
