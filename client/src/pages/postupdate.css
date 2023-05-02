@@ -1,0 +1,24 @@
+.postup-main{
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+   margin-left: 30% ;
+}
+.postup-main>div{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.postup-img{
+    width: 60%;
+    height: 300px;
+    border-radius: 10px;
+}
+.postup-button{
+    position: relative;
+    color: wheat;
+    background-color: #1e114a;
+    width: 20%;
+    left: 30%;
+    border-radius: 10px;
+}

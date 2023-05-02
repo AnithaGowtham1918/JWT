@@ -5,10 +5,6 @@ const createError = require("../utils/error");
 //Update user
 router.put("/:id",async(req,res,next)=>{
   const data = await user.findById(req.params.id);
-      if(req.body.userPassword!=data.userPassword){
-        const salt = await bcrypt.genSalt(10);
-        req.body.password = await bcrypt.hash(req.body.password,salt);
-      }
       try {
         const updatedUser = await user.findByIdAndUpdate(req.params.id,{
             $set:req.body,

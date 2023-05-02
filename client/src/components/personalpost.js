@@ -14,6 +14,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import FmdGoodRoundedIcon from '@mui/icons-material/FmdGoodRounded';
 function PersonalPost(props) {
+     const PF ="http://localhost:4000/images/"
     const [colors,setColorValue]=useState("white");
     const [key,setKey] =useState(0);
     const [ke,setKe]=useState(false);
@@ -34,11 +35,11 @@ function PersonalPost(props) {
         <>
       
            {props.personal.map((data,index)=>{ 
-               return <div className='personalblog-main'>
+               return <div className='personalblog-main' key={index}>
                 <div className='personalblog-top'>
                     <div className='personalbtop-left'>
-                        
-                     <Avatar className="per-avatar" alt="Cindy Baker" src="/static/images/avatar/3.jpg"  style={{width:80,height:80,marginRight:20}}/>
+                    {data.userProfilePic &&<Avatar className="per-avatar" alt="Cindy Baker" src={PF+data.userProfilePic}  style={{width:80,height:80,marginRight:20}}/>}
+                     {!data.userProfilePic &&<Avatar className="per-avatar" alt="Cindy Baker" src="/static/images/avatar/3.jpg"  style={{width:80,height:80,marginRight:20}}/>}
                      <div className='personalbtop-name'>
                      <div><h2>{data.postUserName}</h2></div>
                      <div>{new Date(data.createdAt).toDateString()}</div>

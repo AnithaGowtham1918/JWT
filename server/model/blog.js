@@ -11,7 +11,7 @@ const blogModel =mongoose.Schema({
             type:String,
         },
         image:{
-            type:String,
+            type:Array,
         },
         postUserName:{
             type:String,
@@ -20,6 +20,9 @@ const blogModel =mongoose.Schema({
             type:Array,
         },
         userId:{
+            type:String,
+        },
+        userProfilePic:{
             type:String,
         }
 },{timestamps:true});

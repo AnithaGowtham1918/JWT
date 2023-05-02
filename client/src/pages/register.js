@@ -67,7 +67,7 @@ function Register(props) {
         <div className="register-main">
             <div className='register-flex'>
             <MainLogo ></MainLogo>
-            <form className='form-reg'>
+            <form className='form-reg'  enctype="multipart/form-data" >
             {file && <Avatar className='register-image'  src={URL.createObjectURL(file)} alt=' to upload'></Avatar>}
                 <div className="form-in">
                     <div>

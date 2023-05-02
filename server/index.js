@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGO_URL,{
 }).then( console.log("DB connection sucessfull")).catch((error)=> {
         console.log(error);
         
- })
+ });
 app.use((error,req,res,next)=>{
     const errorStatus= error.status || 500;
     const errorMessage=error.message || "Something went wrong";
@@ -42,9 +42,10 @@ const storage = multer.diskStorage({
   });
   
   const upload = multer({ storage: storage });
-  app.post("/upload", upload.single("file"), (req, res) => {
+  app.post("/upload",upload.single('file'),(req, res) => {
     try{
-     //console.log(res.data);
+      console.log(req.file);
+    // console.log(req.body.name);
       res.status(200).json("File has been uploaded");
     }
     catch(error){
@@ -52,6 +53,15 @@ const storage = multer.diskStorage({
     }
     
   });
+  app.post("/uploadmultiple",upload.array=(req,res)=>{
+    try {
+      console.log(req);
+     console.log(req.body.name);
+      res.status(200).json("Multiple file uploaded successfully");
+    } catch (error) {
+      console.log(error);
+    }
+  })
 app.listen("4000",(req,res)=>{
     console.log("server is up and running");
 });

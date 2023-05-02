@@ -10,23 +10,12 @@ router.get("/addblog",getBlog);
 router.post("/postblog",postBlog);
 //Update Post
 router.put("/:id",async(req,res,next)=>{
-
-    try{
-      const data= await Blogs.findById(req.params.id);
-      if(data.userName === req.body.userName){
         try {
           const updatedPost =await Blogs.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true});
           res.send(updatedPost);
         } catch (error) {
           return next(createError(error.status,error.message));
         }
-      }
-      else{
-        next(createError(401,"you are allowed to update this"));
-      }
-    }catch(error){
-       return next(createError(error.status,error.message));
-    }
 });
 //Delete post
 router.delete("/deleteblog/:id",async(req,res,next)=>{
@@ -52,10 +41,8 @@ router.get("/:id",async(req,res,next)=>{
 });
 // get specific user post
 router.get("/specific/:id",async(req,res,next)=>{
-    const user = await User.findById(req.params.id);
-    console.log(user);
   try {
-    const data = await Blogs.find({postUserName:user.userName});
+    const data = await Blogs.find({userId:req.params.id});
     console.log(data);
     res.send(data);
   } catch (error) {
@@ -91,4 +78,23 @@ router.put("/unLike/:id",async(req,res,next)=>{
  next(createError(422,error.message));
   }
 });
+//update userProfilePic
+router.put("/profilePic/:id",async(req,res,next)=>{
+  try{
+    const id=req.params.id;
+    const blog = await Blogs.find({userId:id});
+    console.log(req.body.profilePic);
+    for(const i of blog){
+      await Blogs.findByIdAndUpdate({_id:i._id},
+        {$set:{postUserName:req.body.userName,userProfilePic:req.body.profilePicture}},
+        {new:true})
+     }
+    res.send(blog);
+    //console.log(blog);
+  }
+  catch(error){
+    next(createError(error.status,error.message));
+  }
+ 
+})
 module.exports= router;

@@ -1,6 +1,5 @@
 const initialState={
     blog:[],
-    singleBlog:[],
 }
 export const blogReducer =(state=initialState,action)=>{
     switch(action.type){
@@ -21,7 +20,11 @@ export const blogReducer =(state=initialState,action)=>{
             return{
            blog:[...filter],
             }    
-    
+        case "UPDATE_POST":
+                return{
+                    ...state.blog,
+                    blog:action.payload,
+                }
             default:
                 return state;
     }

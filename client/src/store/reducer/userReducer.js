@@ -35,7 +35,12 @@ export const userReducer=(state=initialState,action)=>{
                 user:null,
                 isFetching:false,
                 error:false
-            };                          
+            };    
+            case "UPDATE_USER":
+                return{
+                   ...state.user,
+                   user:action.payload,
+                }
         default:
             return state;                                    
 

@@ -1,0 +1,27 @@
+.single-top{
+    display: flex;
+}
+.single-left{
+    display: flex;
+    align-items: flex-end;
+}
+.single-right{
+    width:80%;
+}
+.single-right>div{
+    color:#1e114a;
+    font-size: 35px;
+}
+.single-right>div>span{
+    font-size:30px;
+    color: hsl(254, 14%, 51%);
+}
+.single-Bottom>div>h3{
+    color:#1e114a;
+    font-size: 40px;
+}
+.single-Bottom>div>p{
+    font-size: 25px;
+    padding-left: 60px;
+    color: hsl(254, 14%, 51%);
+}

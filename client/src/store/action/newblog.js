@@ -20,4 +20,10 @@ export const personalBlog=(blog)=>{
         type:"PERSONAL_BLOG",
         payload:blog,
     }
+};
+export const addUpdateData=(data)=>{
+    return{
+        type:"UPDATE_POST",
+        payload:data,
+    }
 }

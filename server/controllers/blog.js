@@ -15,14 +15,17 @@ module.exports.getBlog=async(req,res,next)=>{
 //Add blog 
 module.exports.postBlog=async(req,res,next)=>{
     const id=req.body.userId;
-    console.log(id);
     const user = await User.findById(id);
-    console.log(user);
     const Name= user.userName;
+    const userProfilePic = user.profilePicture;
      if(user){
         try{
-            const {place,visitedDate,image,desc,userId}=req.body;
-           // const image= req.file;
+            const {place,visitedDate,desc,userId}=req.body;
+            const img= req.body.image;
+           const image=[];
+           for(let i=0;i<img.length;i++){
+            image.push(img[i]);
+           }
            const postUserName=Name;
             const data= await new Blogs({
                 place,
@@ -30,12 +33,14 @@ module.exports.postBlog=async(req,res,next)=>{
                 image,
                postUserName,desc,
                userId,
+               userProfilePic,
             });
             const saved=await data.save();
             res.send(saved);
         }
         catch(error){
-            return next(createError(error.status,error.message));
+            //return next(createError(error.status,error.message));
+            console.log(error);
          }   
      }
      else{

@@ -13,6 +13,8 @@ function Login(props) {
         userEmail:"",
         userPassword:"",
     });
+    let passwordError="";
+    console.log(passwordError);
     const userData= useSelector((data)=>
     data.loginuser,
     )
@@ -46,15 +48,13 @@ function Login(props) {
                 window.alert("Please register before login");
                 history("/");
             }
-            else{
-                window.alert(error.response.data.message);
+            else if(error.response.data.message==="wrong password"){
+                passwordError=error.response.data.message;
+        
+               // window.alert(error.response.data.message);
             }  
        console.log(error.response.data);
         }
-        setLoginData({
-           userEmail:"",
-             userPassword:""
-         });
         }
     return (
     
@@ -75,7 +75,8 @@ function Login(props) {
             name="userPassword"
             placeholder="Enter the password"
             onChange={handleChange}
-            value={loginData.userPassword}></input><br></br>
+            value={loginData.userPassword}></input>
+           {passwordError && <div style={{color:"red"}}>{passwordError}</div>}<br></br>
            </div>
              <Button className='login-button' variant="contained" style={{backgroundColor:'#2b2240',color:"wheat"}} type="submit">
            Login

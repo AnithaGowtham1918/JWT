@@ -13,6 +13,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import FmdGoodRoundedIcon from '@mui/icons-material/FmdGoodRounded';
 function Blog(props) {
+    const  PF = "http://localhost:4000/images/";
      var monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
@@ -25,10 +26,9 @@ function Blog(props) {
     const userData= useSelector((data)=>
 data.loginuser.user,
 );
+console.log(userData);
 const id=userData._id;
-    const [ke,setKe]=useState(false);
     const handleLike=async(postId)=>{
-     setKe(!ke);
         try{
             await axios.put(`http://localhost:4000/blog/addlike/${postId}`,{id});
             setKey(key=>key+1);
@@ -38,7 +38,6 @@ const id=userData._id;
        
     }
       const handleUnLike=async(postId)=>{
-     setKe(!ke);
         try{
             await axios.put(`http://localhost:4000/blog/unlike/${postId}`,{id});
             setKey(key=>key+1);
@@ -67,9 +66,6 @@ const id=userData._id;
       await axios.delete(`http://localhost:4000/blog/deleteblog/${id}`);
       //dispatch(deleteBlog(id,index));
       setKey(key=>key+1);
-      
-       
-
     }
    
     return (
@@ -79,8 +75,8 @@ const id=userData._id;
                return <div className='blog-main'>
                 <div className='blog-top'>
                     <div className='btop-left'>
-                        
-                     <Avatar className="blog-avatar" alt="Cindy Baker" src="/static/images/avatar/3.jpg"  style={{width:80,height:80,marginRight:20}}/>
+                   {data.userProfilePic &&<Avatar className="blog-avatar" alt="Cindy Baker" src={PF+data.userProfilePic}  style={{width:80,height:80,marginRight:20}}/>}
+                    {!data.userProfilePic &&<Avatar className="blog-avatar" alt="Cindy Baker" src="/static/images/avatar/3.jpg"  style={{width:80,height:80,marginRight:20}}/>}
                      <div className='btop-name'>
                      <div><h2>{data.postUserName}</h2></div>
                      <div>{new Date(data.createdAt).toDateString()}</div>
@@ -96,6 +92,7 @@ const id=userData._id;
                 <Image image={data.image}></Image>  
               <div className='blog-content'key={index} >
               <Link style={{textDecoration:"none",color:"#1e114a",display:"flex"}} to={`/single/${data._id}`}><FmdGoodRoundedIcon style={{width:"50",height:"50"}}></FmdGoodRoundedIcon><h2>{data.place}</h2></Link>
+              <div>Visited during:{monthNames[new Date(data.visitedDate).getMonth()]}</div>
               </div>                     
               <div className='blog-comments'>
                   {data.likes.includes(userData._id)  ? <Button onClick={()=>handleUnLike(data._id)}><FavoriteRoundedIcon style={{fill:"red"}}></FavoriteRoundedIcon></Button> :<Button onClick={()=>handleLike(data._id)}><FavoriteBorderOutlinedIcon style={{color:"black"}}></FavoriteBorderOutlinedIcon></Button>}
