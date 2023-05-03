@@ -20,6 +20,9 @@ module.exports.postBlog=async(req,res,next)=>{
     const userProfilePic = user.profilePicture;
      if(user){
         try{
+            if(req.body.image.length>1){
+                
+            }
             const {place,visitedDate,desc,userId}=req.body;
             const img= req.body.image;
            const image=[];
@@ -39,7 +42,7 @@ module.exports.postBlog=async(req,res,next)=>{
             res.send(saved);
         }
         catch(error){
-            //return next(createError(error.status,error.message));
+            return next(createError(error.status,error.message));
             console.log(error);
          }   
      }

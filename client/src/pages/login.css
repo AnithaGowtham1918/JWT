@@ -31,7 +31,8 @@
 .login-button{
     width: 30%;
     position: relative;
-    margin-bottom: 60px !important;
+    margin-top: 20px !important;
+    margin-bottom: 40px !important;
 }
 .lo-reg{
     width: 40%;

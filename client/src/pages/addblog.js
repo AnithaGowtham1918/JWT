@@ -32,36 +32,57 @@ const[values,setValues]=useState({
         })
     };
     const[file,setFile]= useState([]);
+    console.log(file.length);
     const handleFile=(e)=>{
-        const img=e.target.files[0];
+      let n=e.target.files.length;
+      for(let j=0;j<n;j++){
+        const img=e.target.files[j];
         setFile((fileimg)=>{return[
-            ...fileimg,
-            img,]});
+          ...fileimg,
+         img,]});
+      }
+        
         
     }
     console.log(file);
   async function  handleSubmit(event){
     event.preventDefault();
     const imgarr=[];
-    if(file){
+    if(file.length>1){
         console.log(file[0].name);
         const data = new FormData();
-        data.append("file",file);
+       
         for(let i=0;i<file.length;i++){
-        const fileName = Date.now() + file[i].name;
+        const fileName = Date.now()+file[i].name;
+       //data.append("file",file);
         console.log(fileName);
-        data.append(`name${[i]}`,fileName);
+        data.append("name",fileName);
+       data.append("file",file[i]);
         imgarr.push(fileName);
         console.log(imgarr);
           }
          try {
-             axios.post("http://localhost:4000/uploadmultiple",data)
+            await axios.post("http://localhost:4000/uploadmultiple",data)
          } catch (error) {
            console.log(error);  
          }
-
+         values.image=imgarr;
     }
-     values.image=imgarr;
+    else{
+        console.log(file[0].name);
+        const singledata= new FormData();
+        const singlefileName = Date.now()+file[0].name;
+        console.log(singlefileName);
+         singledata.append("name",singlefileName);
+         singledata.append("file",file[0]);
+         try {
+           await axios.post("http://localhost:4000/upload",singledata);
+         } catch ({error}) {
+            console.log(error);
+         }
+         values.image[0]=singlefileName;
+    }
+    // values.image=imgarr;
      values.userId=userData._id;
      console.log(values);
     
@@ -82,7 +103,7 @@ const[values,setValues]=useState({
         <>
 <Navbar></Navbar>
             {file &&<PreviewImage imgdata={file}></PreviewImage>}
-          <form className='up-main'  encType="multipart/form-data" >
+          <form className='up-main' encType="multipart/form-data">
             <div>
             <TextField id="standard-basic" label="Place" variant="standard" name="place" onChange={handleValues} value={values.place} autoFocus={true} />
             </div>
@@ -105,8 +126,8 @@ const[values,setValues]=useState({
                 <input id='from' type="date" name='visitedDate'onChange={handleValues} value={values.visitedDate} style={{marginLeft:"10px"}}></input>
              </div>
            <div>
-            <label htmlFor='img'><AddCircleOutlineIcon className='up-addIcon' style={{fontSize:"50px",cursor:"pointer"}}></AddCircleOutlineIcon>Add Image</label>
-            <input id="img" type="file"  name="upload_images" onChange={handleFile} style={{display:'none'}} multiple></input><br />
+            <label htmlFor='file'><AddCircleOutlineIcon className='up-addIcon' style={{fontSize:"50px",cursor:"pointer"}}></AddCircleOutlineIcon>Add Image</label>
+            <input id="file" type="file"  name="file" onChange={handleFile} style={{display:'none'}} multiple></input><br />
             {file && <TextField id="standard-basic" variant="standard"  value={file.name}/>}
            </div>
           

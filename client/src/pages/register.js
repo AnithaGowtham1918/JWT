@@ -51,8 +51,13 @@ function Register(props) {
           history("/login");
         }
         catch(error){
+            if(error.response.data.message==='User already present'){
+                window.alert("User name already taken ");
+                setUserData({userName:""});
+               
+            }
             console.log(error.response.data.message)
-             setError(error.response.data.message);
+            // setError(error.response.data.message);
         }
         setUserData({
             userName:"",
@@ -78,7 +83,7 @@ function Register(props) {
                 placeholder="Enter your name"
                 value={userData.userName}
                 onChange={handleChange}></input><br />
-                {err}
+                <div>{err}</div>
                 </div>
                 <div>
                  <label for="email">Email:</label><br></br>

@@ -14,7 +14,7 @@ function Image(props) {
       <div className='image-main'>   
       <Carousel>
      {props.image.map((img,index)=>
-     <Carousel.Item>
+     <Carousel.Item key={index}>
          <img
            className="d-block w-100 image-wi"
            src={PF + img}

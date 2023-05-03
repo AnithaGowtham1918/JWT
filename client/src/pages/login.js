@@ -49,9 +49,9 @@ function Login(props) {
                 history("/");
             }
             else if(error.response.data.message==="wrong password"){
-                passwordError=error.response.data.message;
-        
-               // window.alert(error.response.data.message);
+                //passwordError=error.response.data.message;
+                window.alert(error.response.data.message);
+                setLoginData({userPassword:""});
             }  
        console.log(error.response.data);
         }
@@ -76,7 +76,6 @@ function Login(props) {
             placeholder="Enter the password"
             onChange={handleChange}
             value={loginData.userPassword}></input>
-           {passwordError && <div style={{color:"red"}}>{passwordError}</div>}<br></br>
            </div>
              <Button className='login-button' variant="contained" style={{backgroundColor:'#2b2240',color:"wheat"}} type="submit">
            Login
