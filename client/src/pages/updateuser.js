@@ -3,8 +3,6 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import "./updateuser.css";
 import { Avatar } from '@mui/material';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
@@ -12,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { addUpdateData } from '../store/action/user';
 function Update(props) {
    const  PF = "http://localhost:4000/images/";
+   const url ="http://localhost:4000";
    const dispatch = useDispatch();
    const [file,setFile]=useState(null);
     const [values,setValues] =useState({
@@ -35,13 +34,13 @@ function Update(props) {
     }
     useEffect(()=>{
         const data=async()=>{
-            const response= await axios.get(`http://localhost:4000/user/${props.id}`);
+            const response= await axios.get(`${url}/user/${props.id}`);
            console.log(response.data);
            addCustomer(response.data);}
            data();
            
        
-    },[])
+    },[props.id])
         
     const handleSubmit=async(e)=>{
         e.preventDefault();
@@ -53,13 +52,13 @@ function Update(props) {
             values.profilePicture=fileName;
         
         try {
-           await  axios.post("http://localhost:4000/upload",datas);
+           await  axios.post(`${url}/upload`,datas);
            console.log(datas);
         } catch (error) {
           console.log(error);  
         }};
         try {
-            await axios.put(`http://localhost:4000/blog/profilePic/${props.id}`,values);
+            await axios.put(`${url}/blog/profilePic/${props.id}`,values);
         } catch (error) {
             console.log(error);
         }
@@ -70,7 +69,7 @@ function Update(props) {
         _id:props.id,
         }
        try{
-        await axios.put(`http://localhost:4000/user/${props.id}`,values);
+        await axios.put(`${url}/user/${props.id}`,values);
         dispatch(addUpdateData(data));
        }
        catch(error){

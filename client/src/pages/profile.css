@@ -4,10 +4,6 @@
 }
 .profile-top{
     margin-left: 20px;
-    padding-left:20px;
-}
-.profile-top>div{
-    padding-left: 30px;
 }
 .profile-val{
     display: flex;

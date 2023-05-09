@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import Image from './image';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
-import {addBlog, deleteBlog} from '../store/action/newblog.js';
+import {addBlog} from '../store/action/newblog.js';
 import {useDispatch,useSelector} from 'react-redux';
 import axios from 'axios';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
@@ -14,6 +14,7 @@ import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import FmdGoodRoundedIcon from '@mui/icons-material/FmdGoodRounded';
 function Blog(props) {
     const  PF = "http://localhost:4000/images/";
+    const url ="http://localhost:4000";
      var monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
@@ -30,7 +31,7 @@ console.log(userData);
 const id=userData._id;
     const handleLike=async(postId)=>{
         try{
-            await axios.put(`http://localhost:4000/blog/addlike/${postId}`,{id});
+            await axios.put(`${url}/blog/addlike/${postId}`,{id});
             setKey(key=>key+1);
         }catch(error){
 
@@ -39,16 +40,16 @@ const id=userData._id;
     }
       const handleUnLike=async(postId)=>{
         try{
-            await axios.put(`http://localhost:4000/blog/unlike/${postId}`,{id});
+            await axios.put(`${url}/blog/unlike/${postId}`,{id});
             setKey(key=>key+1);
         }catch(error){
 
         }
        
     }
-    useEffect(()=>{
+    useEffect (()=>{
       const  fetch=async()=>{
-            await axios.get("http://localhost:4000/blog/addBlog").then((res,err)=>{
+            await axios.get(`${url}/blog/addBlog`).then((res,err)=>{
                 try {
                     dispatch(addBlog(res.data)); 
                 } catch (err) {
@@ -56,16 +57,20 @@ const id=userData._id;
                 }
             })
         }
+       try {
         fetch();
+       } catch (error) {
+        console.log(error);
+       } 
      
     },
     [key,dispatch]);
    const handleDelete =async(id,index)=>
     {
-        window.alert("do you really want to delete");
-      await axios.delete(`http://localhost:4000/blog/deleteblog/${id}`);
+        if(window.confirm("do you really want to delete"))
+     { await axios.delete(`${url}/blog/deleteblog/${id}`);
       //dispatch(deleteBlog(id,index));
-      setKey(key=>key+1);
+      setKey(key=>key+1);}
     }
    
     return (
@@ -100,7 +105,7 @@ const id=userData._id;
               </div>
               </div> 
               
-           })
+           }).reverse()
             
            }
         </>

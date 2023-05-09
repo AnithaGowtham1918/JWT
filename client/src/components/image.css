@@ -9,3 +9,10 @@
 
 
 }
+.carousel-control-next-icon, .carousel-control-prev-icon{
+    visibility:hidden;
+  }
+  .carousel-indicators .active
+  {
+    visibility: hidden;
+  }                                 

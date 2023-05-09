@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import Image from '../components/image';
 import Navbar from '../components/navbar';
 import axios from 'axios';
 import { useParams } from 'react-router';
 import './postupdate.css';
 import { useSelector } from 'react-redux';
 import TextField from '@mui/material/TextField';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import Button from '@mui/material/Button';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import { useNavigate } from 'react-router';
 function Postupdate(props) {
     const PF= "http://localhost:4000/images/";
+    const url ="http://localhost:4000";
 const history=useNavigate();
     const [flag,setFlag]=useState(false);
     const {id}= useParams();
@@ -27,26 +26,27 @@ const history=useNavigate();
     });
     const date =new Date(values.visitedDate).toLocaleDateString();
      const Fetch=async()=>{
-        const res= await axios.get(`http://localhost:4000/blog/${id}`);
+        const res= await axios.get(`${url}/blog/${id}`);
         console.log(res);
         setValues(res.data);
      }
      console.log(values);
     useEffect(()=>{
         Fetch();
-    },[id,key])
+    },[key]);
     const userData= useSelector((data)=>
 data.loginuser.user,
 );
  const handleSubmit=async(e)=>{
     e.preventDefault();
-    await axios.put(`http://localhost:4000/blog/${values._id}`,values).then((res)=>{
+    await axios.put(`${url}/blog/${values._id}`,values).then((res)=>{
         setValues(res.data);
         window.alert("updated successfully");
         history("/home");
+         setKey(old=>old+1);
         
     })
-    setKey(old=>old+1);
+   
  }
 console.log(userData)
     return (
@@ -57,7 +57,6 @@ console.log(userData)
        {!file &&<img className='postup-img'  src={PF+values.image} alt='to upload'></img>} 
         {file &&<img className='postup-img'  src={URL.createObjectURL(file)} alt='to upload'></img>}
            <div>
-            <label htmlFor='img'><AddCircleOutlineIcon className='postup-addIcon' style={{fontSize:"50px",cursor:"pointer"}}></AddCircleOutlineIcon>Add Image</label>
             <input id="img" type="file"  name="upload_images"  style={{display:'none'}} onChange={(e)=>setFile(e.target.files[0])}></input><br />
            </div>
         </div>

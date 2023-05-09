@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector} from "react-redux";
-import { LoginFailure, LoginStart, LoginSuccess, loginUser} from "../store/action/user";
+import { LoginFailure, LoginStart, LoginSuccess} from "../store/action/user";
 import './login.css';
 function Login(props) {
+    const url ="http://localhost:4000";
     const history = useNavigate();
     const dispatch = useDispatch();
     const[loginData,setLoginData]=useState({
@@ -34,7 +35,7 @@ function Login(props) {
         e.preventDefault();
         dispatch(LoginStart());
         try{
-            await axios.post("http://localhost:4000/api/logindata",loginData).then((response)=>{
+            await axios.post(`${url}/api/logindata`,loginData).then((response)=>{
                 dispatch(LoginSuccess(response.data));
                 console.log(response.data);
            if(response.data){
@@ -70,7 +71,7 @@ function Login(props) {
             value={loginData.userEmail}></input>
             </div>
            <div>
-           <label for="password">Password:</label>
+           <label htmlFor="password">Password:</label>
             <input type="password"
             name="userPassword"
             placeholder="Enter the password"
@@ -80,7 +81,11 @@ function Login(props) {
              <Button className='login-button' variant="contained" style={{backgroundColor:'#2b2240',color:"wheat"}} type="submit">
            Login
              </Button>
+            
              </div>
+             {/* <Button variant="contained" style={{backgroundColor:'#2b2240',color:"wheat",position:"relative",left:"35%"}}>
+           Forget Password?
+             </Button> */}
              <div className='lo-reg'>
                 <div>Not an user?</div>
                 <div><Link to="/"><button style={{backgroundColor:"#2b2240",color:"wheat"}}>Register</button></Link></div>

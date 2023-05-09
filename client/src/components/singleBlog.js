@@ -10,19 +10,19 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import "./singleBlog.css";
 function SingleBlog(props) {
+    const url ="http://localhost:4000";
     let {id}=useParams();
     const history = useNavigate();
     const userData= useSelector((data)=>
     data.loginuser.user,
     );
     const [value,setValue]=useState([]);
-    const [key,setKey] = useState(0);
     console.log(value);
     console.log(id);
     useEffect(()=>{
         const data =async()=>{
             try{
-                const response = await axios.get(`http://localhost:4000/blog/${id}`);
+                const response = await axios.get(`${url}/blog/${id}`);
                 setValue(response.data);
                 console.log(response.data);
             }
@@ -35,7 +35,7 @@ function SingleBlog(props) {
     },[id]);
     const handleDelete=async(id)=>{
         window.alert("Do you really want to delete?");
-        await axios.delete(`http://localhost:4000/blog/deleteblog/${id}`);
+        await axios.delete(`${url}/blog/deleteblog/${id}`);
         history("/home");
 
     }

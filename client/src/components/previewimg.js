@@ -4,20 +4,19 @@ import './image.css';import 'bootstrap/dist/css/bootstrap.css';
 //import { requirePropFactory } from '@mui/material';
 function PreviewImage(props) {
   console.log(props.imgdata);
-  
+ 
   return (
     <>
-   <div style={{width:"60%"}}  className='image-main'>   
+ {props.imgdata &&<div style={{width:"60%"}}  className='image-main'>   
       <Carousel>
-      { props.imgdata.map((file,index)=>
-       <Carousel.Item key={index} activeIndex={index}>
+       <Carousel.Item>
          <img
            className="d-block w-100 image-wi"   
-           src={URL.createObjectURL(file)}
+           src={URL.createObjectURL(props.imgdata)}
            alt="no"
          />
-       </Carousel.Item>)}
-       </Carousel></div>
+       </Carousel.Item>
+       </Carousel></div>}
      
    
 </>

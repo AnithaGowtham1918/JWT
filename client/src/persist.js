@@ -2,17 +2,10 @@ import { userReducer } from "./store/reducer/userReducer";
 import { blogReducer } from "./store/reducer/blogreducer";
 //import { createStore } from 'redux';
 import {combineReducers, legacy_createStore as createStore} from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import ReduxThunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import {
   persistStore,
   persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 const persistConfig = {

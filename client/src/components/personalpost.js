@@ -6,18 +6,11 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import Image from './image';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
-import {personalBlog} from '../store/action/newblog.js';
-import {useDispatch,useSelector} from 'react-redux';
 import axios from 'axios';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import FmdGoodRoundedIcon from '@mui/icons-material/FmdGoodRounded';
 function PersonalPost(props) {
      const PF ="http://localhost:4000/images/"
-    const [colors,setColorValue]=useState("white");
     const [key,setKey] =useState(0);
-    const [ke,setKe]=useState(false);
    const handleDelete =async(id)=>
     {
         window.alert("do you really want to delete");
@@ -28,9 +21,6 @@ function PersonalPost(props) {
     useEffect(()=>{
 
     },[key]);
-    var monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
     return (
         <>
       

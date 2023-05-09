@@ -3,11 +3,10 @@ import './register.css';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Image from '../Images/memory.jpg';
 import MainLogo from '../components/mainlogo';
-import TextField from '@mui/material/TextField';
 import { Avatar } from '@mui/material';
 function Register(props) {
+    const url ="http://localhost:4000";
     const [file,setFile]=useState(null);
     const history = useNavigate();
     const [userData,setUserData]=useState({
@@ -16,7 +15,6 @@ function Register(props) {
         profilePicture:null,
         userPassword:"",
     });
-    const [err,setError]=useState("")
     const handleChange=(event)=>{
         const name=event.target.name;
         const value=event.target.value;
@@ -38,14 +36,14 @@ function Register(props) {
             data.append("file",file);
             userData.profilePicture=fileName;
             try {
-                axios.post("http://localhost:4000/upload",data)
+                axios.post(`${url}/upload`,data)
             } catch (error) {
               console.log(error);  
             }
     
         }
         try{
-            const uri="http://localhost:4000/api/registerdata"
+            const uri=`${url}/api/registerdata`;
           const response= await axios.post(uri,userData);
           console.log(response.data);
           history("/login");
@@ -83,7 +81,6 @@ function Register(props) {
                 placeholder="Enter your name"
                 value={userData.userName}
                 onChange={handleChange}></input><br />
-                <div>{err}</div>
                 </div>
                 <div>
                  <label for="email">Email:</label><br></br>
