@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import PreviewImage from '../components/previewimg';
 function Addblog(props) {
-  const url ="http://localhost:4000";
+  const url ="https://memoriesspotapi.onrender.com";
 const userData= useSelector((data)=>
 data.loginuser.user,
 )

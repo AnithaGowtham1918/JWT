@@ -9,12 +9,12 @@ import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutl
 import axios from 'axios';
 import FmdGoodRoundedIcon from '@mui/icons-material/FmdGoodRounded';
 function PersonalPost(props) {
-     const PF ="http://localhost:4000/images/"
+     const PF ="https://memoriesspotapi.onrender.com/images/"
     const [key,setKey] =useState(0);
    const handleDelete =async(id)=>
     {
         window.alert("do you really want to delete");
-      await axios.delete(`http://localhost:4000/blog/deleteblog/${id}`);
+      await axios.delete(`https://memoriesspotapi.onrender.com/blog/deleteblog/${id}`);
        setKey(key=>key+1);
 
     }

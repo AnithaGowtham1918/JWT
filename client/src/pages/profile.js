@@ -9,8 +9,8 @@ import './profile.css';
 import PersonalPost from '../components/personalpost';
 import Update from './updateuser';
 function Profile(props) {
-    const PF ="http://localhost:4000/images/";
-    const url ="http://localhost:4000";
+    const PF ="https://memoriesspotapi.onrender.com/images/";
+    const url ="https://memoriesspotapi.onrender.com";
     const userData= useSelector((data)=>
     data.loginuser.user,
     );

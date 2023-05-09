@@ -6,7 +6,7 @@ import { Link, useNavigate} from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import { LogOut } from '../store/action/user';
 function Navbar(props) {
-    const  PF = "http://localhost:4000/images/";
+    const  PF = "https://memoriesspotapi.onrender.com/images/";
     const history = useNavigate();
     const dispatch =useDispatch();
     const handleLogOut=()=>{

@@ -9,8 +9,8 @@ import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutl
 import { useDispatch } from 'react-redux';
 import { addUpdateData } from '../store/action/user';
 function Update(props) {
-   const  PF = "http://localhost:4000/images/";
-   const url ="http://localhost:4000";
+   const  PF = "https://memoriesspotapi.onrender.com/images/";
+   const url ="https://memoriesspotapi.onrender.com";
    const dispatch = useDispatch();
    const [file,setFile]=useState(null);
     const [values,setValues] =useState({

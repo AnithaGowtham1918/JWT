@@ -13,8 +13,8 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import FmdGoodRoundedIcon from '@mui/icons-material/FmdGoodRounded';
 function Blog(props) {
-    const  PF = "http://localhost:4000/images/";
-    const url ="http://localhost:4000";
+    const  PF = "https://memoriesspotapi.onrender.com/images/";
+    const url ="https://memoriesspotapi.onrender.com";
      var monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];

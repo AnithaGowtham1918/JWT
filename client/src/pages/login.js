@@ -7,7 +7,7 @@ import { useDispatch, useSelector} from "react-redux";
 import { LoginFailure, LoginStart, LoginSuccess} from "../store/action/user";
 import './login.css';
 function Login(props) {
-    const url ="http://localhost:4000";
+    const url ="https://memoriesspotapi.onrender.com";
     const history = useNavigate();
     const dispatch = useDispatch();
     const[loginData,setLoginData]=useState({

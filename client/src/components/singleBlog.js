@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import "./singleBlog.css";
 function SingleBlog(props) {
-    const url ="http://localhost:4000";
+    const url ="https://memoriesspotapi.onrender.com";
     let {id}=useParams();
     const history = useNavigate();
     const userData= useSelector((data)=>

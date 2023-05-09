@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import MainLogo from '../components/mainlogo';
 import { Avatar } from '@mui/material';
 function Register(props) {
-    const url ="http://localhost:4000";
+    const url ="https://memoriesspotapi.onrender.com";
     const [file,setFile]=useState(null);
     const history = useNavigate();
     const [userData,setUserData]=useState({

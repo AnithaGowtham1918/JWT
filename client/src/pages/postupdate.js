@@ -9,8 +9,8 @@ import Button from '@mui/material/Button';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import { useNavigate } from 'react-router';
 function Postupdate(props) {
-    const PF= "http://localhost:4000/images/";
-    const url ="http://localhost:4000";
+    const PF= "https://memoriesspotapi.onrender.com/images/";
+    const url ="https://memoriesspotapi.onrender.com";
 const history=useNavigate();
     const [flag,setFlag]=useState(false);
     const {id}= useParams();
