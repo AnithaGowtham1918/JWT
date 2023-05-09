@@ -28,7 +28,7 @@ data.loginuser.user,
             <li><Button href="" style={{color:'white'}} onClick={handleLogOut}>LogOUT</Button></li>
          </div>
          <div className='nav-end' style={{width:"20%"}}>
-         {!userData.profilePicture && <div className='avatar'><Link to="/profile"><Avatar sx={{ width: 60, height: 60 }}></Avatar></Link></div>}
+          {!userData.profilePicture && <div className='avatar'><Link to="/profile"><Avatar sx={{ width: 60, height: 60 }}></Avatar></Link></div>}
            {userData.profilePicture && <div className='avatar'><Link to="/profile"><Avatar sx={{ width: 60, height: 60 }} src={PF+userData.profilePicture}></Avatar></Link></div>}
             <div className='user'> <Link to ="/profile"><Button style={{color:'white',marginLeft:"20px"}}>{userData.userName}</Button></Link></div>
          </div>
