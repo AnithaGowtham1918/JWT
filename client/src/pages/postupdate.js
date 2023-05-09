@@ -25,15 +25,16 @@ const history=useNavigate();
         desc:""
     });
     const date =new Date(values.visitedDate).toLocaleDateString();
-     const Fetch=async()=>{
+     
+     console.log(values);
+   useEffect(()=>{
+    const fetch=async()=>{
         const res= await axios.get(`${url}/blog/${id}`);
         console.log(res);
         setValues(res.data);
      }
-     console.log(values);
-    useEffect(()=>{
-        Fetch();
-    },[key]);
+        fetch();
+    },[key,id]);
     const userData= useSelector((data)=>
 data.loginuser.user,
 );
