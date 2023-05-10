@@ -57,12 +57,8 @@ const id=userData._id;
                 }
             })
         }
-       try {
+       
         fetch();
-       } catch (error) {
-        console.log(error);
-       } 
-     
     },
     [key,dispatch]);
    const handleDelete =async(id,index)=>

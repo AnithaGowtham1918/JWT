@@ -31,9 +31,9 @@ router.delete("/:id",async(req,res,next)=>{
   
   });
 //Get User
-router.get("/:id",async(req,res,next)=>{
+router.get("/:userid",async(req,res,next)=>{
     try {
-      const User= await user.findById(req.params.id);
+      const User= await user.findById(req.params.userid);
       res.send(User);
     } catch (error) {
       return next(createError(405,"User not found"));

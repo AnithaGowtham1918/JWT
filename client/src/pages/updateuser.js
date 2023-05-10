@@ -34,18 +34,18 @@ function Update(props) {
     }
     useEffect(()=>{
         const data=async()=>{
-            const response= await axios.get(`${url}/user/${props.id}`);
-            try {
-                addCustomer(response.data);
-            } catch (error) {
-                console.log(error)
-            }
-           console.log(response.data);
+             await axios.get(`${url}/user/${props.id}`).then(res=>{
+                addCustomer(res.data);
+                console.log(res.data);
+             }).catch(error=>{
+                console.log(error);
+             });
+          
            }
            data();
            
        
-    },[props.id])
+    },[])
         
     const handleSubmit=async(e)=>{
         e.preventDefault();
@@ -61,12 +61,12 @@ function Update(props) {
            console.log(datas);
         } catch (error) {
           console.log(error);  
-        }};
+        }
         try {
             await axios.put(`${url}/blog/profilePic/${props.id}`,values);
         } catch (error) {
             console.log(error);
-        }
+        }};
         const data={
             userName:values.userName,
         userEmail:values.userEmail,
