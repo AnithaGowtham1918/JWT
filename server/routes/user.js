@@ -8,5 +8,5 @@ router.delete("/:id",deleteUser);
 //Get User
 router.get("/:id",getUser);
 //change password
-router.put("/change/:email",changePassword);
+// router.put("/change/:email",changePassword);
 module.exports=router;

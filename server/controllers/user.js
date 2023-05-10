@@ -90,13 +90,13 @@ module.exports.updateUser=async(req,res,next)=>{
     }
 }
 //changePassword
-module.exports.changePassword=async(req,res,next)=>{
-  const userEmail=req.params.email;
-  const data=await user.findOne({userEmail:userEmail});
-  try {
-    const updatedData = await user.findByIdAndUpdate({_id:data._id},{$set:{userPassword:req.body.userPassword}},{new:true});
-    res.send("Password Changed");
-  } catch (error) {
-    next(createError(error.status,error.message));
-  }
-}
+// module.exports.changePassword=async(req,res,next)=>{
+//   const userEmail=req.params.email;
+//   const data=await user.findOne({userEmail:userEmail});
+//   try {
+//     const updatedData = await user.findByIdAndUpdate({_id:data._id},{$set:{userPassword:req.body.userPassword}},{new:true});
+//     res.send("Password Changed");
+//   } catch (error) {
+//     next(createError(error.status,error.message));
+//   }
+// }
