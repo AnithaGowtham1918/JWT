@@ -7,8 +7,10 @@ function Image(props) {
   console.log(props.image);
   return (
     <>
-   
-      <div className='image-main'>   
+   {!props.image &&<div>Loading</div>
+
+   }
+      { props.image &&<div className='image-main'>   
       <Carousel>
      <Carousel.Item>
          <img
@@ -17,7 +19,7 @@ function Image(props) {
            alt="no"
          />
        </Carousel.Item>
-       </Carousel></div>
+       </Carousel></div>}
    
 </>
   );
