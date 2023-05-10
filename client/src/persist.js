@@ -1,7 +1,8 @@
 import { userReducer } from "./store/reducer/userReducer";
 import { blogReducer } from "./store/reducer/blogreducer";
 //import { createStore } from 'redux';
-import {combineReducers, legacy_createStore as createStore} from 'redux';
+import thunk from 'redux-thunk';
+import {applyMiddleware, combineReducers, legacy_createStore as createStore} from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import {
   persistStore,
@@ -21,7 +22,7 @@ const rootReducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store =createStore(persistedReducer,
-    composeWithDevTools(),
+    composeWithDevTools(applyMiddleware(thunk)),
   // middleware: (getDefaultMiddleware) =>
   //   getDefaultMiddleware({
   //     serializableCheck: {

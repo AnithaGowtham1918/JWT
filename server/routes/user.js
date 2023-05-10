@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const createError = require("../utils/error");
+const user = require("../model/register.js");
 //const { updateUser, deleteUser, getUser } = require("../controllers/user");
 //Update user
 router.put("/:id",async(req,res,next)=>{

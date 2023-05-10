@@ -2,7 +2,6 @@ const Login =require("../model/register.js");
 const createError = require("../utils/error");
 const bcrypt=require("bcrypt");
 const user = require("../model/register");
-const { use } = require("../routes/user.js");
 //Loginrouter
 module.exports.loginData=async(req,res,next)=>{
     const Email= req.body.userEmail;

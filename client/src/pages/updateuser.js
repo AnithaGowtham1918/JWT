@@ -35,8 +35,13 @@ function Update(props) {
     useEffect(()=>{
         const data=async()=>{
             const response= await axios.get(`${url}/user/${props.id}`);
+            try {
+                addCustomer(response.data);
+            } catch (error) {
+                console.log(error)
+            }
            console.log(response.data);
-           addCustomer(response.data);}
+           }
            data();
            
        

@@ -24,7 +24,7 @@ function PersonalPost(props) {
     return (
         <>
       
-           {props.personal.map((data,index)=>{ 
+           {props.personal && props.personal.map((data,index)=>{ 
                return <div className='personalblog-main' key={index}>
                 <div className='personalblog-top'>
                     <div className='personalbtop-left'>
@@ -54,6 +54,7 @@ function PersonalPost(props) {
            })
             
            }
+           {!props.personal&&<div>No post yet</div>}
         
        
         </>
