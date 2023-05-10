@@ -89,14 +89,3 @@ module.exports.updateUser=async(req,res,next)=>{
       return next(createError(405,"User not found"));
     }
 }
-//changePassword
-// module.exports.changePassword=async(req,res,next)=>{
-//   const userEmail=req.params.email;
-//   const data=await user.findOne({userEmail:userEmail});
-//   try {
-//     const updatedData = await user.findByIdAndUpdate({_id:data._id},{$set:{userPassword:req.body.userPassword}},{new:true});
-//     res.send("Password Changed");
-//   } catch (error) {
-//     next(createError(error.status,error.message));
-//   }
-// }
