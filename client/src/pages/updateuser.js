@@ -45,7 +45,7 @@ function Update(props) {
            data();
            
        
-    },[])
+    },[props.id])
         
     const handleSubmit=async(e)=>{
         e.preventDefault();
