@@ -2,6 +2,7 @@ const Login =require("../model/register.js");
 const createError = require("../utils/error");
 const bcrypt=require("bcrypt");
 const user = require("../model/register");
+const { use } = require("../routes/user.js");
 //Loginrouter
 module.exports.loginData=async(req,res,next)=>{
     const Email= req.body.userEmail;
@@ -87,4 +88,15 @@ module.exports.updateUser=async(req,res,next)=>{
     } catch (error) {
       return next(createError(405,"User not found"));
     }
+}
+//changePassword
+module.exports.changePassword=async(req,res,next)=>{
+  const userEmail=req.params.email;
+  const data=await user.findOne({userEmail:userEmail});
+  try {
+    const updatedData = await user.findByIdAndUpdate({_id:data._id},{$set:{userPassword:req.body.userPassword}},{new:true});
+    res.send("Password Changed");
+  } catch (error) {
+    next(createError(error.status,error.message));
+  }
 }

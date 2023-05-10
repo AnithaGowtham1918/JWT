@@ -53,6 +53,7 @@ function Login(props) {
                 //passwordError=error.response.data.message;
                 window.alert(error.response.data.message);
                 setLoginData({userPassword:""});
+               // history("/changepassword");
             }  
        console.log(error.response.data);
         }

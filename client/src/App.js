@@ -9,6 +9,7 @@ import SingleBlog from './components/singleBlog';
 import Profile from './pages/profile';
 import Postupdate from './pages/postupdate';
 import Update from './pages/updateuser';
+//import Changepassword from './pages/changepassword';
 function App(props) {
   return (
     <>
@@ -23,6 +24,7 @@ function App(props) {
           <Route path='/profile' element={<Profile></Profile>}></Route>
           <Route path="/postupdate/:id" element={<Postupdate></Postupdate>}></Route>
           <Route path="/updateuser/:id" element={<Update></Update>}></Route>
+        {/* <Route path='/changepassword' element={<Changepassword></Changepassword>}></Route> */}
         </Routes>
       </Router>
       

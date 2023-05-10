@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import './image.css';import 'bootstrap/dist/css/bootstrap.css';
 //import { requirePropFactory } from '@mui/material';
 function Image(props) {
-  const  PF = "https://memoriesspotapi.onrender.com/images/";
+  const  PF = "https://memoriesspotapi.onrender.com/public/images/";
   console.log(props.image);
   return (
     <>
@@ -13,7 +13,7 @@ function Image(props) {
      <Carousel.Item>
          <img
            className="d-block w-100 image-wi"
-           src={PF + props.image}
+           src={PF +props.image}
            alt="no"
          />
        </Carousel.Item>
