@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import './image.css';import 'bootstrap/dist/css/bootstrap.css';
 //import { requirePropFactory } from '@mui/material';
 function Image(props) {
-  const  PF = "https://memoriesspotapi.onrender.com/public/images/";
+  const  PF = "https://memoriesspotapi.onrender.com/images/";
   console.log(props.image);
   return (
     <>
