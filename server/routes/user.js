@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const createError = require("../utils/error");
-const { updateUser, deleteUser, getUser } = require("../controllers/user");
+//const { updateUser, deleteUser, getUser } = require("../controllers/user");
 //Update user
 router.put("/:id",async(req,res,next)=>{
     const data = await user.findById(req.params.id);

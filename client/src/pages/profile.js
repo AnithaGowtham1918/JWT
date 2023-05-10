@@ -15,7 +15,7 @@ function Profile(props) {
     data.loginuser.user,
     );
     console.log(userData);
-    const [post,setPost] = useState([]);
+    const [post,setPost] = useState({});
     console.log(post);
    useEffect(()=>{
     const fetch =async()=>{
