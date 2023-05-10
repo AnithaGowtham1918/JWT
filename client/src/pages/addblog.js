@@ -86,7 +86,8 @@ const[values,setValues]=useState({
          setValues({
             place:"",
             visitedDate:"",
-             desc:""
+             desc:"",
+             image:[]
     });
     setFile(null);
 };
@@ -119,7 +120,7 @@ const[values,setValues]=useState({
              </div>
            <div>
             <label htmlFor='file'><AddCircleOutlineIcon className='up-addIcon' style={{fontSize:"50px",cursor:"pointer"}}></AddCircleOutlineIcon>Add Image</label>
-            <input id="file" type="file"  name="file" onChange={handleFile} style={{display:'none'}}></input><br />
+            <input id="file" type="file"  name="file" onChange={handleFile} style={{display:'none'}} value={values.image}></input><br />
             {file && <TextField id="standard-basic" variant="standard"  value={file.name}/>}
            </div>
            
