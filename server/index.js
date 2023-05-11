@@ -36,7 +36,7 @@ app.use((error,req,res,next)=>{
 });
 const storage = multer.diskStorage({
     destination:function (req, file, cb){
-      cb(null,path.join(__dirname, ".","public","images"));
+      cb(null,"./public/images");
     },
     filename: function (req, file, cb){
       cb(null,req.body.name);
