@@ -10,7 +10,8 @@ const multer = require("multer");
 const path = require("path");
 const bodyParser = require('body-parser')
 dotenv.config();
-app.use(express.static(path.join(__dirname, "./public/images")));
+app.use(express.static(path.join(__dirname, "./public")));
+//console.log(path.join(__dirname, "./public"));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -35,10 +36,11 @@ app.use((error,req,res,next)=>{
 });
 const storage = multer.diskStorage({
     destination:function (req, file, cb){
-      cb(null,"./public/images");
+      cb(null,path.join(__dirname, ".","public","images"));
     },
     filename: function (req, file, cb){
       cb(null,req.body.name);
+      console.log(path.join(__dirname, ".","public","images"))
      }
   });
 let maxSize=2*1000*1000;
@@ -55,4 +57,6 @@ let maxSize=2*1000*1000;
   });
 app.listen("4000",(req,res)=>{
     console.log("server is up and running");
+    console.log(path.join(__dirname, "./public"));
+    console.log(path.join(__dirname, ".","public","images"));
 });
