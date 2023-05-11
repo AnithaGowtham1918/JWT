@@ -10,7 +10,7 @@ const multer = require("multer");
 const path = require("path");
 const bodyParser = require('body-parser')
 dotenv.config();
-app.use("/images", express.static(path.join(__dirname, "./public/images")));
+app.use(express.static(path.join(__dirname, "./public/images")));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
