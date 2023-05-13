@@ -57,6 +57,7 @@ function Update(props) {
             values.profilePicture=fileName;
         
         try {
+            
            await  axios.post(`${url}/upload`,datas);
            console.log(datas);
         } catch (error) {

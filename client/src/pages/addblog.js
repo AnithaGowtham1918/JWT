@@ -68,6 +68,7 @@ const[values,setValues]=useState({
          singledata.append("name",singlefileName);
          singledata.append("file",file);
          try {
+          //const uri="http://localhost:4000";
            await axios.post(`${url}/upload`,singledata);
          } catch ({error}) {
             console.log(error);
